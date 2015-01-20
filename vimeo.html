@@ -6,151 +6,253 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Cancer Iphone web template, Andriod web template, Smartphone web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(
-hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<script type="application/x-javascript">
+	 addEventListener("load", function() { setTimeout(
+hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+</script>
 <!--webfont-->
 <link href='http://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
 <script src="js/jquery-1.11.1.min.js"></script>
 <script type="text/javascript">
-			jQuery(document).ready(function($) {
-				$(".scroll").click(function(event){		
-					event.preventDefault();
-					$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-				});
-			});
-		</script>
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event) {
+			event.preventDefault();
+			/*$('html,body').animate({
+				scrollTop : $(this.hash).offset().top
+			}, 1000);*/
+		});
+	});
+</script>
 <script type="text/javascript" src="js/move-top.js"></script>
 <script type="text/javascript" src="js/easing.js"></script>
 <script src="js/mobile.js"></script>
-</script><script type="text/javascript">window.onload = function() { w3Init(); };</script>
+</script>
+<script type="text/javascript">
+	window.onload = function() {
+		w3Init();
+	};
+</script>
 <script src="js/jquery.easydropdown.js"></script>
 
 <script type="text/javascript">
-var page = 1;
-var per_page = 10;
-var total_video = -999999;
-var index = 0;
+	var page = 1;
+	var per_page = 10;
+	var total_video = -999999;
+	var index = 0;
+	var group_id = 257383;			// defalut 257383 주일 설교
 
-function getVideoList(page, per_page) {
-	var vimeo_api = "https://api.vimeo.com/groups/257383/videos?page=" + page + "&per_page=" + per_page;
-	var json;
-	jQuery.ajax( 
-		{
-			url: vimeo_api,
-			type: 'GET',
-			dataType:'json',
-			beforeSend : function( xhr ) {
-				xhr.setRequestHeader( "Authorization", "bearer 12e08ed7569cd0ee0431c035bf316558" );
-			},
-			success: function( response ) {
-				total_video = response.total;
-				
-				for (var i = 0; i < response.data.length; i++)
-				{
-					var title;
-					var video_url;
-					var num_played;
-					var thumb_nail = "";
-				
-					var min_width = 999999;
-					var thumb_nail_index;
-					for (var j = 0; j < response.data[i].pictures.sizes.length; j++)
-					{
-						if ( response.data[i].pictures.sizes[j].width < min_width )
-						{
-							thumb_nail_index = j;
-							min_width = response.data[i].pictures.sizes[j].width;
-						}
-					}
-					
-					var thumb_nail = "";
-					if ( thumb_nail_index >= 0 )
-					{
-						thumb_nail = '<img src="' + response.data[i].pictures.sizes[thumb_nail_index].link + '">';
-					}
-					
-					var video_width = response.data[i].width;
-					var video_height = response.data[i].height;
-					
-					video_url = response.data[i].link.replace("vimeo.com", "player.vimeo.com/video") + "?autoplay=1";
-					$('#list').append('<div class="posts"><a href="#" onClick="toggleOverlay(' + index + ', \'' + video_url + '\');return false;"><div class="date">' + thumb_nail + '</div><div class="post_desc"><p>' + response.data[i].name + '</p></div></a><div class="clear"></div></div><div style="display:none" id="overlay' + index + '">' + index + '</div>');
-					//$('#list').append('<div>' + response.data[i].name + '//' + thumb_nail_url + '//' + response.data[i].link + '//' + '[' + response.data[i].stats.plays + ']' + '</>');		
-					index++;
-				}	// for (var i = 0; i < response.data.length; i++)
-			}	// success: function( response ) {
-	} );	// jQuery.ajax
-	
-	if ( total_video == index )
-	{
-		toggleReadMore();
+	function getVideoList(page, per_page) {
+		var vimeo_api = "https://api.vimeo.com/groups/" + group_id + "/videos?page="
+				+ page + "&per_page=" + per_page;
+		var json;
+		jQuery
+				.ajax({
+					url : vimeo_api,
+					type : 'GET',
+					dataType : 'json',
+					beforeSend : function(xhr) {
+						xhr.setRequestHeader("Authorization",
+								"bearer 12e08ed7569cd0ee0431c035bf316558");
+					},
+					success : function(response) {
+						total_video = response.total;
+
+						for (var i = 0; i < response.data.length; i++) {
+							var title;
+							var video_url;
+							var num_played;
+							var thumb_nail = "";
+
+							var min_width = 999999;
+							var thumb_nail_index;
+							for (var j = 0; j < response.data[i].pictures.sizes.length; j++) {
+								if (response.data[i].pictures.sizes[j].width < min_width) {
+									thumb_nail_index = j;
+									min_width = response.data[i].pictures.sizes[j].width;
+								}
+							}
+
+							var thumb_nail = "";
+							if (thumb_nail_index >= 0) {
+								thumb_nail = '<img src="' + response.data[i].pictures.sizes[thumb_nail_index].link + '">';
+							}
+
+							var video_width = response.data[i].width;
+							var video_height = response.data[i].height;
+
+							video_url = response.data[i].link.replace(
+									"vimeo.com", "player.vimeo.com/video")
+									+ "?autoplay=1";
+							$('#list')
+									.append(
+											'<div class="posts"><a href="#" onClick="toggleOverlay('
+													+ index
+													+ ', \''
+													+ video_url
+													+ '\');return false;"><div class="date">'
+													+ thumb_nail
+													+ '</div><div class="post_desc"><p>'
+													+ response.data[i].name
+													+ '</p></div></a><div class="clear"></div></div><div style="display:none" id="overlay' + index + '">'
+													+ index + '</div>');
+							//$('#list').append('<div>' + response.data[i].name + '//' + thumb_nail_url + '//' + response.data[i].link + '//' + '[' + response.data[i].stats.plays + ']' + '</>');		
+							index++;
+						} // for (var i = 0; i < response.data.length; i++)
+					} // success: function( response ) {
+				}); // jQuery.ajax
+
+		if (total_video == index) {
+			toggleReadMore();
+		}
 	}
-}
 
-function toggleOverlay(n, video_url)
-{
-	var overlay = document.getElementById('overlay' + n);
+	function toggleOverlay(n, video_url) {
+		var overlay = document.getElementById('overlay' + n);
 
-	for (var i = 0; i < index; i++ )
-	{
-		if ( i != n )
-			toggleOffOverlay(i);
+		for (var i = 0; i < index; i++) {
+			if (i != n)
+				toggleOffOverlay(i);
+		}
+
+		if (overlay.style.display == "block") {
+			overlay.style.display = "none";
+			overlay.innerHTML = "";
+		} else {
+			overlay.innerHTML = '<iframe src="'
+					+ video_url
+					+ '?title=0&amp;byline=0&amp;portrait=0" width="100%" height="100%" class="video_iframe" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
+			overlay.style.display = "block";
+		}
 	}
-	
-	if (overlay.style.display == "block")
-	{
+
+	function toggleOffOverlay(n) {
+		var overlay = document.getElementById('overlay' + n);
+		if (overlay.style.display == "none")
+			return;
 		overlay.style.display = "none";
 		overlay.innerHTML = "";
-	} else {
-		overlay.innerHTML = '<iframe src="' + video_url + '?title=0&amp;byline=0&amp;portrait=0" width="100%" height="100%" class="video_iframe" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
-		overlay.style.display = "block";
 	}
-}
 
-
-function toggleOffOverlay(n)
-{
-	var overlay = document.getElementById('overlay' + n);
-	if (overlay.style.display == "none")
-		return;
-	overlay.style.display = "none";
-	overlay.innerHTML = "";
-}
-
-
-function toggleReadMore()
-{
-	var readMore = document.getElementById('read_more');
-	if (readMore.style.display != "none")
-	{
-		readMore.style.display = "none";
-	} else {
-		readMore.style.display = "block";
+	function toggleReadMore() {
+		var readMore = document.getElementById('read_more');
+		if (readMore.style.display != "none") {
+			readMore.style.display = "none";
+		} else {
+			readMore.style.display = "block";
+		}
 	}
-}
 
-
-function toggleOffAll()
-{
-	for (var i = 0; i < index; i++ )
-	{
-		toggleOffOverlay(i);
+	function toggleOffAll() {
+		for (var i = 0; i < index; i++) {
+			toggleOffOverlay(i);
+		}
 	}
-}
+	
+	function initVideoList(video_group) {
+		page = 1;
+		per_page = 10;
+		total_video = -999999;
+		index = 0;
+		group_id = video_group;
+		
+		
+		var list = document.getElementById('list');
+		list.innerHTML = "";
+		
+		getVideoList(page++, per_page);
+		
+		return false;
+	}
+
+	function toggleTopMenu() {
+		var menuLinks = document.getElementById('w3-menu-links');
+		if (menuLinks.style.display != "none") {
+			menuLinks.style.display = "none";
+		} else {
+			menuLinks.style.display = "block";
+		}
+		
+		return false;
+	}
+	
+
+	function changeVideoGroup(video_group) {
+		var menuLinks = document.getElementById('w3-menu-links');
+		menuLinks.style.display = "none";
+		
+		var obj = document.getElementById('video_group_name');
+		if ( obj.innerHTML == video_group )
+			return false;
+		
+		obj.innerHTML = video_group;
+		if ( video_group == "주일 예배 설교" )
+		{
+			initVideoList(257383);
+		}
+		else if ( video_group == "수요 예배 설교" )
+		{
+			initVideoList(257385);
+		}
+		else if ( video_group == "새벽 예배 설교" )
+		{
+			initVideoList(257382);
+		}
+		else if ( video_group == "주일 3부 설교" )
+		{
+			initVideoList(257384);
+		}
+		else if ( video_group == "특별 새벽 예배 설교" )
+		{
+			initVideoList(257386);
+		}
+		else
+		{
+			return false;
+		}
+		
+	}
 </script>
 
-
 </head>
+
 <body>
 
-<div class="grid_1_of_3 images_1_of_3" id="list">							 
-							  <h3>Videos</h3>
-</div>
+	<div class="header">
+		<div id="w3-masthead">
+			<div id="w3-universal-nav">
+				<ul id="header_top">
+					<h1>설교</h1>
+				</ul>
+				<div id="w3-mobile-options">
+					<li class="video-menu-trigger"><a href="#" onClick="toggleTopMenu();return false;">Menu</a></li>
+					<li class="home-trigger"><a href="index.html">Home</a></li>
+				</div>
+				<ul id="w3-menu-links" style="display: none;">
+					<li><a href="#" onClick="changeVideoGroup('주일 예배 설교');return false;">주일 예배 설교</a></li>
+					<li><a href="#" onClick="changeVideoGroup('주일 3부 설교');return false;">주일 3부 설교</a></li>
+					<li><a href="#" onClick="changeVideoGroup('수요 예배 설교');return false;">수요 예배 설교</a></li>
+					<li><a href="#" onClick="changeVideoGroup('새벽 예배 설교');return false;">새벽 예배 설교</a></li>
+					<li><a href="#" onClick="changeVideoGroup('특별 새벽 예배 설교');return false;">특별 새벽 예배 설교</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<div class="grid_1_of_3 images_1_of_3">
+		<h3><div id="video_group_name">주일설교</div></h3>
+		<div id="list"></div>
+	</div>
 
-<div id="read_more" class="read_more">							 
-	<button type="button" onclick="getVideoList(page++, per_page);">더 보기...</button>
-</div>
-<p><br><br><br><br></p>
-<!--
+	<div id="read_more" class="read_more">
+		<button type="button" onClick="getVideoList(page++, per_page);return false">더 보기...</button>
+	</div>
+	<p>
+		<br>
+		<br>
+		<br>
+		<br>
+	</p>
+	<!--
    <div class="footer">
 	<div class="copyright">All Rights Reservered by Hanmaum. Badenerstrasse 23, 65824, Schwalbach/Ts.</div>
    </div>
@@ -158,6 +260,6 @@ function toggleOffAll()
 
 </body>
 <script type="text/javascript">
-	getVideoList(page++, per_page);
+	initVideoList(257383);
 </script>
-</html>		
+</html>
