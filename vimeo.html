@@ -33,6 +33,7 @@ hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
 	};
 </script>
 <script src="js/jquery.easydropdown.js"></script>
+<script src="js/submenu.js"></script>
 
 <script type="text/javascript">
 	var page = 1;
@@ -160,17 +161,6 @@ hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
 		list.innerHTML = "";
 		
 		getVideoList(page++, per_page);
-		
-		return false;
-	}
-
-	function toggleTopMenu() {
-		var menuLinks = document.getElementById('w3-menu-links');
-		if (menuLinks.style.display != "none") {
-			menuLinks.style.display = "none";
-		} else {
-			menuLinks.style.display = "block";
-		}
 		
 		return false;
 	}

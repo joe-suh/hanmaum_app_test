@@ -554,31 +554,61 @@ ul.social {
 
 ul.social li:first-child {
 	margin-left: 0;
+	padding-top: 20px;
+}
+
+ul.social li {
+	border-bottom: 2px solid #fff;
+	text-align: center;
+	padding: 15px;
 }
 
 ul.social li a i {
-	width: 80px;
-	height: 100px;
 	display: block;
-	background: url(../images/main_icons.png) no-repeat;
-	/*margin-bottom: 30px;*/
-	border-bottom: 2px solid #fff;
+	padding: 30px;
+	/*margin-bottom: 30px;
+	border-bottom: 2px solid #fff;*/
 }
 
 ul.social li a i:hover,ul.footer_social li a i:hover {
 	opacity: 0.8;
 }
 
-ul.social li a i.tw {
-	background-position: -0px -10px;
+ul.social li a i.sermon {
+	background: url(../images/holy_bible.png) no-repeat;
+	background-position: center; 
+	background-size: 40px;
 }
 
-ul.social li a i.google {
-	background-position: -0px -105px;
+ul.social li a i.church {
+	background: url(../images/church.png) no-repeat;
+	background-position: center; 
+	background-size: 50px;
 }
 
-ul.social li a i.fb {
-	background-position: -0px -10px;
+ul.social li a i.service {
+	background: url(../images/timetable.png) no-repeat;
+	background-position: center; 
+	background-size: 50px;
+}
+
+ul.desc {
+	margin-left: 5px;
+	padding-top: 10px;
+}
+
+.desc_prayer {
+	/*color: #fff;*/
+	font-size: 15px;
+	/*line-height: 1.5em;*/
+	font-style: italic;
+	text-align: center;
+	margin: 20px;
+}
+
+p.desc {
+	padding: 0 20px 0 20px;
+	margin-bottom: 15px;
 }
 
 .benefit_icons {
@@ -699,8 +729,7 @@ i.icon4 {
 }
 
 .content_desc {
-	position: absolute;
-	background: rgba(0, 0, 0, 0.35);
+	/*background: rgba(0, 0, 0, 0.35);*/
 	bottom: 0px;
 	padding: 1em;
 }
@@ -709,7 +738,7 @@ i.icon4 {
 	background: rgba(255, 159, 0, 0.54);
 }
 
-.content_desc p {
+.content_desc  p {
 	color: #fff;
 	font-size: 1em;
 	line-height: 1.3em;
@@ -996,6 +1025,15 @@ i.about_icon4 {
 .metro li.active {
 	background-color: #ff9f00;
 	color: #fff;
+}
+
+.top_in_footer {
+	padding: 15px;
+	position: fixed;
+	width: 100%;
+	right: 20px;
+	bottom: 10px;
+	text-align: right;
 }
 
 .footer {
