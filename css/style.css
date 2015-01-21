@@ -230,7 +230,7 @@ form input[type="text"] {
 }
 /**** Slider *****/
 .main_background {
-	background: url(../images/background_1.jpg) no-repeat center top;
+	background: url(../images/background.jpg) no-repeat center top;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -241,13 +241,13 @@ form input[type="text"] {
 
 
 .right_menu_bar {
-	padding: 25px;
-	padding-top: 7%;
+	padding: 15px;
 	float: right;
 	background-color: rgba(60, 60, 60, 0.3);
 	display: block;
 	height: 100vh;
 	margin: 0 auto 0 auto;
+	z-index: 1;
 }
 
 
@@ -557,28 +557,28 @@ ul.social li:first-child {
 }
 
 ul.social li a i {
-	width: 62px;
-	height: 25px;
+	width: 80px;
+	height: 100px;
 	display: block;
-	background: url(../images/img-sprite.png) no-repeat;
-	margin-bottom: 30px;
-	border-bottom: 2px solid #ff00ff;
+	background: url(../images/main_icons.png) no-repeat;
+	/*margin-bottom: 30px;*/
+	border-bottom: 2px solid #fff;
 }
 
 ul.social li a i:hover,ul.footer_social li a i:hover {
 	opacity: 0.8;
 }
 
-ul.social li a i.google {
-	background-position: -69px -9px;
+ul.social li a i.tw {
+	background-position: -0px -10px;
 }
 
-ul.social li a i.tw {
-	background-position: -137px -10px;
+ul.social li a i.google {
+	background-position: -0px -105px;
 }
 
 ul.social li a i.fb {
-	background-position: -204px -10px;
+	background-position: -0px -10px;
 }
 
 .benefit_icons {
