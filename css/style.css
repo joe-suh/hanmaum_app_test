@@ -141,6 +141,8 @@ ul#w3-unav-links li {
 
 .video-menu-trigger {
 	background: url(../images/nav_icon.png);
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-tap-highlight-color: transparent; /* For some Androids */
 }
 
 #w3-mobile-options li a {
@@ -169,6 +171,8 @@ ul#w3-unav-links li {
 .home-trigger {
 	background: url(../images/home_button.png) no-repeat 5px;
 	background-size: 30px 30px;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-tap-highlight-color: transparent; /* For some Androids */
 }
 
 #w3-menu-links {
@@ -247,6 +251,27 @@ form input[type="text"] {
 	display: block;
 	height: 100vh;
 	margin: 0 auto 0 auto;
+	z-index: 1;
+}
+
+
+.header {
+	padding: 5px 5px;
+	position: absolute;
+	width: 100%;
+	top: 0;
+}
+
+
+
+.logo {
+	background: url(../images/logo.png) no-repeat;
+	background-position: center; 
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-tap-highlight-color: transparent; /* For some Androids */
+	display: block;
+	position: fixed;
+	margin-top: 30%;
 	z-index: 1;
 }
 
@@ -578,18 +603,24 @@ ul.social li a i.sermon {
 	background: url(../images/holy_bible.png) no-repeat;
 	background-position: center; 
 	background-size: 40px;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-tap-highlight-color: transparent; /* For some Androids */
 }
 
 ul.social li a i.church {
 	background: url(../images/church.png) no-repeat;
 	background-position: center; 
 	background-size: 50px;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-tap-highlight-color: transparent; /* For some Androids */
 }
 
 ul.social li a i.service {
 	background: url(../images/timetable.png) no-repeat;
 	background-position: center; 
 	background-size: 50px;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-tap-highlight-color: transparent; /* For some Androids */
 }
 
 ul.desc {
