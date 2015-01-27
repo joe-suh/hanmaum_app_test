@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>예배 안내</title>
+<title>오시는 길</title>
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -28,80 +28,54 @@
 <body class="other_background ngc">
 
 	<div class="top_menu_bar">
-		<h1>예배 안내</h1>
+		<h1>오시는 길</h1>
 	</div>
 	<div>
 		<a href="index.html">
 		<div class="home-trigger"></div>
 		</a>
 	</div>
+	 
+	<div class="map">
+		<iframe src="https://www.google.com/maps/embed/v1/place?q=50.158447%2C%208.523853&key=AIzaSyB9ip4UEOuZwJRsEEya2zNPFA4kglzb3I8" frameborder="0" class="map_iframe auto_height_from_width_90"></iframe>
+	</div>
 
-	<div class="grid_1_of_3 images_1_of_3">
-		<h3></h3>
-		<table width="98%">
-			<tbody>
-				<tr>
-					<th>예 배</th>
-					<th>시 간</th>
-					<th>장 소</th>
-				</tr>
-				<tr>
-					<td>1부 예배</td>
-					<td>주일 09:00</td>
-					<td>본당</td>
-				</tr>
-				<tr>
-					<td>2부 예배</td>
-					<td>주일 10:50</td>
-					<td>본당</td>
-				</tr>
-				<tr>
-					<td>3부 예배</td>
-					<td>주일 14:30</td>
-					<td>본당</td>
-				</tr>
-				<tr>
-					<td>수요 기도회</td>
-					<td>수 19:30</td>
-					<td>본당</td>
-				</tr>
-				<tr>
-					<td>새벽 기도회</td>
-					<td>월-토 05:30</td>
-					<td>본당</td>
-				</tr>
-				<tr>
-					<td>유아 유치부</td>
-					<td>주일 11:00</td>
-					<td>지하교육실</td>
-				</tr>
-				<tr>
-					<td>유년 초등부</td>
-					<td>주일 11:00</td>
-					<td>소예배실</td>
-				</tr>
-				<tr>
-					<td>중고등부</td>
-					<td>주일 11:00</td>
-					<td>Schwalbach Tanzschule</td>
-				</tr>
-				<tr>
-					<td>청년부 모임</td>
-					<td>주일 16:00</td>
-					<td>소예배실</td>
-				</tr>
-			</tbody>
-		</table>
+	<br>
+	
+	<div class="grid_1_of_3 images_1_of_3" id="list">
+		<div class="textbox">
+			<ul class="address">
+				<li>교회</li>
+			</ul>
+			<p>Badener Strasse 23, 65824, Schwalbach am Taunus</p>
+			<br>
+			
+			<ul class="address">
+				<li>주차장</li>
+			</ul>
+			<p>Wilhelm Leuschner Strasse 1, 65824, Schwalbach am Taunus</p>
+			<br>
+			
+			<ul class="address">
+				<li>대중교통</li>
+			</ul>
+			<p>S-Bahn 이용시, Bad Soden 방향 S-Bahn 3번을 타시고, Schwalbach Limes역에서 하차</p>
+			<p>버스 이용시, 811번 또는 812번 타시고, Schwalbach Limes역에서 하차</p>
+		</div>
 	</div>
 
 	<p>
 		<br> <br> <br> <br>
 	</p>
-	<!--
-   <div class="footer">
-	<div class="copyright">All Rights Reservered by Hanmaum. Badenerstrasse 23, 65824, Schwalbach/Ts.</div>
-   </div>
--->
+
+
+<script type="text/javascript">
+var cw = $('.auto_height_from_width_90').width();
+cw = cw * 4 / 5;
+$('.auto_height_from_width_90').css({
+    'height': cw + 'px'
+});
+</script>
 
 </body>
 
