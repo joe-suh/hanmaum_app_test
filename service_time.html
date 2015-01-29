@@ -11,29 +11,22 @@
 	function hideURLbar(){ window.scrollTo(0,1); }
 </script>
 <!--webfont-->
-<style>
-	@import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
-	/* font family for Korean - http://www.cmsfactory.net/node/10009 */
-	.ngc {font-family: 'Nanum Gothic Coding';}
-</style>
 <link href='http://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
 <script src="js/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="js/move-top.js"></script>
-<script type="text/javascript" src="js/easing.js"></script>
 <script src="js/jquery.easydropdown.js"></script>
 <script src="phonegap.js"></script>
 <script src="js/disable_back_button.js"></script>
+<script src="js/submenu.js"></script>
 
 </head>
-<body class="other_background ngc">
+<body class="other_background">
 
 	<div class="top_menu_bar">
 		<h1>예배 안내</h1>
 	</div>
 	<div>
-		<a href="index.html">
-		<div class="home-trigger"></div>
-		</a>
+		<div class="home-trigger" onClick="goHome();return false;"></div>
 	</div>
 
 	<div class="grid_1_of_3 images_1_of_3">

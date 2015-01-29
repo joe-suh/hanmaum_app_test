@@ -14,7 +14,6 @@
 <link href='http://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
 <script src="js/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="js/move-top.js"></script>
-<script type="text/javascript" src="js/easing.js"></script>
 <script src="js/jquery.easydropdown.js"></script>
 <script src="js/submenu.js"></script>
 <script src="phonegap.js"></script>
@@ -23,9 +22,8 @@
 <script type="text/javascript">
 
 	function changeContext(menu) {
-		var menuLinks = document.getElementById('w3-menu-links');
-		menuLinks.style.display = "none";
-
+		toggleTopMenu();
+		
 		var submenu1 = document.getElementById('vision');
 		var submenu2 = document.getElementById('pastor_lee');
 		
@@ -45,29 +43,26 @@
 		}
 		
 	}
+	
 </script>
 
 </head>
-<body>
+<body class="other_background" onClick="handleOnClick();return false;">
 
-	<div class="header">
-		<div id="w3-masthead">
-			<div id="w3-universal-nav">
-				<ul id="header_top">
-					<h1>교회 소개</h1>
-				</ul>
-				<div id="w3-mobile-options">
-					<li class="video-menu-trigger"><a href="#" onClick="toggleTopMenu();return false;">Menu</a></li>
-					<li class="home-trigger"><a href="index.html">Home</a></li>
-				</div>
-				<ul id="w3-menu-links" style="display: none;">
-					<li><a href="#" onClick="changeContext('교회 비전');return false;">교회 비전</a></li>
-					<li><a href="#" onClick="changeContext('담임 목사님 소개');return false;">담임 목사님 소개</a></li>
-				</ul>
-			</div>
-		</div>
+	<div class="top_menu_bar">
+		<h1>교회 소개</h1>
 	</div>
-
+	<div>
+		<div class="video-menu-trigger" onClick="toggleTopMenu();return false;"></div>
+	</div>
+	<div>
+		<div class="home-trigger" onClick="goHome();return false;"></div>
+	</div>
+	<ul class="sub-menu" id="sub-menu-links" style="display: none;">
+		<li onClick="changeContext('교회 비전');return false;">교회 비전</li>
+		<li onClick="changeContext('담임 목사님 소개');return false;">담임 목사님 소개</li>
+	</ul>
+	
 	<div class="grid_1_of_3 images_1_of_3" style="display:block" id="vision">
 		<h3>비전 - 예수님의 꿈을 이루는 교회</h3>
 		
@@ -141,13 +136,6 @@
 		<br> <br> <br> <br> 
 	</p>
 	
-	<div class="top_in_footer"><a href="#" class="btn">TOP</a></div>
-	<!--
-   <div class="footer">
-	<div class="copyright">All Rights Reservered by Hanmaum. Badenerstrasse 23, 65824, Schwalbach/Ts.</div>
-   </div>
--->
-
 </body>
 
 </html>

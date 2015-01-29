@@ -14,7 +14,6 @@ hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
 <link href='http://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
 <script src="js/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="js/move-top.js"></script>
-<script type="text/javascript" src="js/easing.js"></script>
 <script src="phonegap.js"></script>
 <script src="js/disable_back_button.js"></script>
 <script src="js/jquery.easydropdown.js"></script>
@@ -152,7 +151,7 @@ hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
 	
 
 	function changeVideoGroup(video_group) {
-		var menuLinks = document.getElementById('w3-menu-links');
+		var menuLinks = document.getElementById('sub-menu-links');
 		menuLinks.style.display = "none";
 		
 		var obj = document.getElementById('video_group_name');
@@ -190,28 +189,24 @@ hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
 
 </head>
 
-<body>
+<body class="other_background" onClick="handleOnClick();return false;">
 
-	<div class="header">
-		<div id="w3-masthead">
-			<div id="w3-universal-nav">
-				<ul id="header_top">
-					<h1>설교</h1>
-				</ul>
-				<div id="w3-mobile-options">
-					<li class="video-menu-trigger"><a href="#" onClick="toggleTopMenu();return false;">Menu</a></li>
-					<li class="home-trigger"><a href="index.html">Home</a></li>
-				</div>
-				<ul id="w3-menu-links" style="display: none;">
-					<li><a href="#" onClick="changeVideoGroup('주일 예배 설교');return false;">주일 예배 설교</a></li>
-					<li><a href="#" onClick="changeVideoGroup('주일 3부 설교');return false;">주일 3부 설교</a></li>
-					<li><a href="#" onClick="changeVideoGroup('수요 예배 설교');return false;">수요 예배 설교</a></li>
-					<li><a href="#" onClick="changeVideoGroup('새벽 예배 설교');return false;">새벽 예배 설교</a></li>
-					<li><a href="#" onClick="changeVideoGroup('특별 새벽 예배 설교');return false;">특별 새벽 예배 설교</a></li>
-				</ul>
-			</div>
-		</div>
+	<div class="top_menu_bar">
+		<h1>교회 소개</h1>
 	</div>
+	<div>
+		<div class="video-menu-trigger" onClick="toggleTopMenu();return false;"></div>
+	</div>
+	<div>
+		<div class="home-trigger" onClick="goHome();return false;"></div>
+	</div>
+	<ul class="sub-menu" id="sub-menu-links" style="display: none;">
+		<li onClick="changeVideoGroup('주일 예배 설교');return false;">주일 예배 설교</li>
+		<li onClick="changeVideoGroup('주일 3부 설교');return false;">주일 3부 설교</li>
+		<li onClick="changeVideoGroup('수요 예배 설교');return false;">수요 예배 설교</li>
+		<li onClick="changeVideoGroup('새벽 예배 설교');return false;">새벽 예배 설교</li>
+		<li onClick="changeVideoGroup('특별 새벽 예배 설교');return false;">특별 새벽 예배 설교</li>
+	</ul>
 
 	<div class="grid_1_of_3 images_1_of_3">
 		<h3><div id="video_group_name">주일설교</div></h3>
