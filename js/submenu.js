@@ -24,9 +24,14 @@ function toggleTopMenu() {
 	return false;
 }
 
-function goHome() {
+function go(url) {
 	isClickHandled = true;
-	location.href='index.html';
+	location.href=url;
+	return false;
+}
+
+function goHome() {
+	go('index.html');
 	return false;
 }
 
