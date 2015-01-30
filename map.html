@@ -6,10 +6,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Cancer Iphone web template, Andriod web template, Smartphone web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-<script type="application/x-javascript">
-	addEventListener("load", function() {setTimeout(hideURLbar, 0); }, false); 
-	function hideURLbar(){ window.scrollTo(0,1); }
-</script>
 <!--webfont-->
 <link href='http://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
 <script src="js/jquery-1.11.1.min.js"></script>
@@ -17,6 +13,25 @@
 <script src="js/disable_back_button.js"></script>
 <script src="js/submenu.js"></script>
 
+<style type="text/css">
+      #map-canvas { height: 100%; margin: 0; padding: 0;}
+    </style>
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9ip4UEOuZwJRsEEya2zNPFA4kglzb3I8">
+    </script>
+    <script type="text/javascript">
+      function initialize() {
+    	  alert('init');
+        var mapOptions = {
+          center: { lat: 50.158447, lng: 08.523853},
+          zoom: 15
+        };
+        var map = new google.maps.Map(document.getElementById('map-canvas'),
+            mapOptions);
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+  </head>
 </head>
 <body class="other_background">
 
@@ -26,10 +41,11 @@
 	<div>
 		<div class="home-trigger" onClick="goHome();return false;"></div>
 	</div>
-	 
+	<div id="map-canvas"  style="width: 100%; height: 200px;"></div>
+	<!-- 
 	<div class="map">
-		<iframe src="https://www.google.com/maps/embed/v1/place?q=50.158447%2C%208.523853&key=AIzaSyB9ip4UEOuZwJRsEEya2zNPFA4kglzb3I8" frameborder="0" class="map_iframe auto_height_from_width_90"></iframe>
-	</div>
+		<iframe id="map-canvas" src="https://www.google.com/maps/embed/v1/place?q=50.158447%2C%208.523853&key=AIzaSyB9ip4UEOuZwJRsEEya2zNPFA4kglzb3I8" frameborder="0" class="map_iframe auto_height_from_width_90"></iframe>
+	</div> -->
 
 	<br>
 	
