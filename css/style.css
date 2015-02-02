@@ -281,11 +281,9 @@ form input[type="text"] {
   text-decoration: none;
 }
 
-.map_iframe {
-  height: auto;
-  border: 0;
-  margin: 0 auto;
-  display:block;
+.div_center {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .images_1_of_3 table {
