@@ -13,19 +13,63 @@
 <script src="js/submenu.js"></script>
 
 <style type="text/css">
-      #map-canvas { height: 100%; margin: 0; padding: 0;}
-    </style>
-    <script type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9ip4UEOuZwJRsEEya2zNPFA4kglzb3I8">
-    </script>
-    <script type="text/javascript">
+#map-canvas {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+</style>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB9ip4UEOuZwJRsEEya2zNPFA4kglzb3I8"></script>
+<script type="text/javascript">
+	var map;
+	var badenerStr=[{lat: 50.158608, lng: 08.523831}, {lat: 50.159385, lng: 08.525634}];
+    var frankenStr=[{lat:50.155492665815785,lng:8.521850947290659},{lat:50.1557195083649,lng:8.521805349737406},{lat:50.15607179958411,lng:8.52183485403657},{lat:50.156250521941864,lng:8.521858993917704},{lat:50.15639315565189,lng:8.521915320307016},{lat:50.15672482034452,lng:8.522108439356089},{lat:50.15692416174709,lng:8.522266689687967},{lat:50.15758748146436,lng:8.522862140089273},{lat:50.15770089790402,lng:8.523023072630167},{lat:50.15775588759608,lng:8.523041848093271},{lat:50.157793692972696,lng:8.523006979376078},{lat:50.15781431407463,lng:8.52295333519578},{lat:50.15781431407463,lng:8.522886279970407},{lat:50.1577713534356,lng:8.522829953581095},{lat:50.1575904721985,lng:8.522866459993224}];
+    var pommenStr=[{lat:50.15610273234769,lng:8.520161155611277},{lat:50.156513448811495,lng:8.520373050123453},{lat:50.15677809269726,lng:8.520501796156168},{lat:50.15684167575028,lng:8.520536664873362},{lat:50.157097725567276,lng:8.520643953233957},{lat:50.15774385860635,lng:8.521107975393534},{lat:50.158240481522874,lng:8.52157199755311},{lat:50.15836420684468,lng:8.521746341139078},{lat:50.15841060375781,lng:8.521684650331736},{lat:50.15840029333657,lng:8.521606866270304},{lat:50.15836936205948,lng:8.52156126871705},{lat:50.158245287667725,lng:8.521578839819426}];
+    var wuerttembergerStr=[{lat:50.16001041051398,lng:8.524331990629435},{lat:50.15977843326116,lng:8.523792866617441},{lat:50.15969595218886,lng:8.523540738970041},{lat:50.159555046694514,lng:8.523245695978403},{lat:50.15935743463082,lng:8.522891644388437},{lat:50.15936946321457,lng:8.522601965814829},{lat:50.159336814194525,lng:8.522556368261576},{lat:50.159311038636595,lng:8.522537592798471},{lat:50.15927838957663,lng:8.522551003843546},{lat:50.1592612058519,lng:8.522599283605814},{lat:50.15925776910621,lng:8.522725347429514},{lat:50.159274952832185,lng:8.522768262773752},{lat:50.15935684504692,lng:8.522890904388532}];
+    var noParkingPath = [
+                      new google.maps.Polyline({
+                    	  path:badenerStr,
+                    	  strokeColor:"#FF0000",
+                    	  strokeOpacity:0.4,
+                    	  strokeWeight:4}),
+                      new google.maps.Polyline({
+                    	  path:frankenStr,
+                    	  strokeColor:"#FF0000",
+                    	  strokeOpacity:0.4,
+                    	  strokeWeight:4}),
+                      new google.maps.Polyline({
+                    	  path:pommenStr,
+                    	  strokeColor:"#FF0000",
+                    	  strokeOpacity:0.4,
+                    	  strokeWeight:4}),
+                      new google.maps.Polyline({
+                    	  path:wuerttembergerStr,
+                    	  strokeColor:"#FF0000",
+                    	  strokeOpacity:0.4,
+                    	  strokeWeight:4}),
+                    ];
+    var parkingMarker = [
+						new google.maps.Marker({
+	  					position:{lat: 50.154981, lng: 8.524299},
+	  					icon:{url:'./images/parking.png', scaledSize: {width:15, height:15}}
+	  					}),
+						new google.maps.Marker({
+	  					position:{lat: 50.155636, lng: 8.523054},
+	  					icon:{url:'./images/parking.png', scaledSize: {width:15, height:15}}
+	  					}),
+						new google.maps.Marker({
+	  					position:{lat: 50.155094, lng: 8.522167},
+	  					icon:{url:'./images/parking.png', scaledSize: {width:15, height:15}}
+	  					})
+                    ];
+    	// 50.154981, 8.524299   50.155636, 8.523054   50.155094, 8.522167
       function initialize() {
         var mapOptions = {
           center: { lat: 50.158447, lng: 08.523853},
           zoom: 15
         };
-        var map = new google.maps.Map(document.getElementById('map-canvas'),
-            mapOptions);
+        
+        map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
         
         marker=new google.maps.Marker({
         	  position:{lat: 50.158447, lng: 08.523853},
@@ -34,20 +78,57 @@
         	  });
 
         marker.setMap(map);
-
-        var badenerStr=[{lat: 50.158608, lng: 08.523831}, {lat: 50.159385, lng: 08.525634}];
-        var flightPath=new google.maps.Polyline({
-          path:badenerStr,
-          strokeColor:"#FF0000",
-          strokeOpacity:0.7,
-          strokeWeight:4
-          });
-        
-        //flightPath.setMap(map);
       }
+
       google.maps.event.addDomListener(window, 'load', initialize);
+      
+      var noParkingShowing = false;
+      var parkingShowing = false;
+
+      function toggleNoParking() {
+    	var btnObj = document.getElementById('no_parking_button');
+    	var mapObject;
+    	if ( noParkingShowing )
+    	{
+    		mapObject = null;
+    		noParkingShowing = false;
+    		btnObj.innerHTML = btnObj.innerHTML.replace("숨기기","보기");
+    	}
+    	else
+    	{
+    		mapObject = map;
+    		noParkingShowing = true;
+    		btnObj.innerHTML = btnObj.innerHTML.replace("보기","숨기기");
+    	}
+
+    	for	(index = 0; index < noParkingPath.length; index++) {
+          	noParkingPath[index].setMap(mapObject);
+        }
+		
+      }
+
+      function toggleParking() {
+    	var btnObj = document.getElementById('parking_button');
+    	var mapObject;
+    	if ( parkingShowing )
+    	{
+    		mapObject = null;
+    		parkingShowing = false;
+    		btnObj.innerHTML = btnObj.innerHTML.replace("숨기기","보기");
+    	}
+    	else
+    	{
+    		mapObject = map;
+    		parkingShowing = true;
+    		btnObj.innerHTML = btnObj.innerHTML.replace("보기","숨기기");
+    	}
+
+    	for	(index = 0; index < parkingMarker.length; index++) {
+    		parkingMarker[index].setMap(mapObject);
+        }
+		
+      }
     </script>
-  </head>
 </head>
 <body class="other_background">
 
@@ -57,10 +138,16 @@
 	<div>
 		<div class="home-trigger" onClick="goHome();return false;"></div>
 	</div>
-	<div id="map-canvas" class="div_center" style="width:95%;height:45vh;"></div>
-
+	<div id="map-canvas" class="div_center" style="width: 95%;
+	height: 45vh;"></div>
 	<br>
-	
+	<div class="map_menu">
+		<a id="parking_button" class="btn" onClick="toggleParking();return false;" href="#"><img src="./images/parking.png" style="display:inline;vertical-align:middle;" width="20px" height="20px" />보기</a>  
+		<a id="no_parking_button" class="btn" onClick="toggleNoParking();return false;" href="#"><img src="./images/no_parking.png" style="display:inline;vertical-align:middle;" width="20px" height="20px" />보기</a>
+	</div>
+	<br>
+
+
 	<div class="grid_1_of_3 images_1_of_3" id="list">
 		<div class="textbox">
 			<ul class="address">
@@ -68,13 +155,13 @@
 			</ul>
 			<p>Badener Strasse 23, 65824, Schwalbach am Taunus</p>
 			<br>
-			
+
 			<ul class="address">
 				<li>주차장</li>
 			</ul>
 			<p>Wilhelm Leuschner Strasse 1, 65824, Schwalbach am Taunus</p>
 			<br>
-			
+
 			<ul class="address">
 				<li>대중교통</li>
 			</ul>
@@ -88,13 +175,13 @@
 	</p>
 
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 var cw = $('.auto_height_from_width_90').width();
 cw = cw * 4 / 5;
 $('.auto_height_from_width_90').css({
     'height': cw + 'px'
 });
-</script>
+</script> -->
 
 </body>
 
