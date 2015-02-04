@@ -1,14 +1,10 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Vimeo</title>
+<title>설교</title>
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<script type="application/x-javascript">
-	 addEventListener("load", function() { setTimeout(
-hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
-</script>
 <!--webfont-->
 <link href='http://fonts.googleapis.com/css?family=Lato:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
 <script src="js/jquery-1.11.1.min.js"></script>
@@ -35,6 +31,7 @@ hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
 					beforeSend : function(xhr) {
 						xhr.setRequestHeader("Authorization",
 								"bearer 12e08ed7569cd0ee0431c035bf316558");
+						toggleLoading(true);
 					},
 					success : function(response) {
 						total_video = response.total;
@@ -80,9 +77,11 @@ hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
 							//$('#list').append('<div>' + response.data[i].name + '//' + thumb_nail_url + '//' + response.data[i].link + '//' + '[' + response.data[i].stats.plays + ']' + '</>');		
 							index++;
 						} // for (var i = 0; i < response.data.length; i++)
+							
+						toggleLoading(false);
 					} // success: function( response ) {
 				}); // jQuery.ajax
-
+		
 		if (total_video == index) {
 			toggleReadMore();
 		}
@@ -102,7 +101,7 @@ hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
 		} else {
 			overlay.innerHTML = '<iframe src="'
 					+ video_url
-					+ '?title=0&amp;byline=0&amp;portrait=0" width="100%" height="auto" class="video_iframe" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
+					+ '?title=0&amp;byline=0&amp;portrait=0" width="100%" height="auto" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>';
 			overlay.style.display = "block";
 		}
 	}
@@ -121,6 +120,15 @@ hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
 			readMore.style.display = "none";
 		} else {
 			readMore.style.display = "block";
+		}
+	}
+	
+	function toggleLoading(showFlag) {
+		var overlay = document.getElementById('overlay');
+		if ( showFlag ) {
+			overlay.style.display = "block";
+		} else {
+			overlay.style.display = "none";
 		}
 	}
 
@@ -189,7 +197,7 @@ hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
 <body class="other_background" onClick="handleOnClick();return false;">
 
 	<div class="top_menu_bar">
-		<h1>교회 소개</h1>
+		<h1>설교</h1>
 	</div>
 	<div>
 		<div class="video-menu-trigger" onClick="toggleTopMenu();return false;"></div>
@@ -204,6 +212,11 @@ hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
 		<li onClick="changeVideoGroup('새벽 예배 설교');return false;">새벽 예배 설교</li>
 		<li onClick="changeVideoGroup('특별 새벽 예배 설교');return false;">특별 새벽 예배 설교</li>
 	</ul>
+
+	<div id="overlay" style="display: block;">
+		<span class="helper"></span>
+		<img src="./images/loading.gif"/> Loading...
+	</div>
 
 	<div class="grid_1_of_3 images_1_of_3">
 		<h3><div id="video_group_name">주일설교</div></h3>
